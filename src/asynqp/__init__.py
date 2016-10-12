@@ -64,7 +64,7 @@ def connect(host='localhost',
     dispatcher = Dispatcher()
 
     def protocol_factory():
-        AMQP(dispatcher, loop, close_callback=on_connection_close)
+        return AMQP(dispatcher, loop, close_callback=on_connection_close)
     transport, protocol = yield from loop.create_connection(protocol_factory, **kwargs)
 
     # RPC-like applications require TCP_NODELAY in order to acheive
