@@ -38,6 +38,7 @@ class Exchange(object):
 
         :param asynqp.Message message: the message to send
         :param str routing_key: the routing key with which to publish the message
+        :param bool mandatory: if True (the default) undeliverable messages result in an error (see also :meth:`Channel.set_return_handler`)
         """
         self.sender.send_BasicPublish(self.name, routing_key, mandatory, message)
 
@@ -52,5 +53,5 @@ class Exchange(object):
             it has no queues bound to it.
         """
         self.sender.send_ExchangeDelete(self.name, if_unused)
-        yield from self.synchroniser.await(spec.ExchangeDeleteOK)
+        yield from self.synchroniser.wait(spec.ExchangeDeleteOK)
         self.reader.ready()
