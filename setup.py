@@ -9,10 +9,10 @@ except ImportError:
 
 setup(
     name='asynqp',
-    version='0.5.1',
+    version='0.6',
     author="Benjamin Hodgson",
     author_email="benjamin.hodgson@huddle.net",
-    url="https://github.com/benjamin-hodgson/asynqp",
+    url="https://github.com/polosaty/asynqp",
     description="An AMQP (aka RabbitMQ) client library for asyncio.",
     package_dir={'': 'src'},
     packages=find_packages('src'),
